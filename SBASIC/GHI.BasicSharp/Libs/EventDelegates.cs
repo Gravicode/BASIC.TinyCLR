@@ -5,22 +5,22 @@ namespace GHI.BasicSharp
 {
 
     [Serializable]
-    public delegate void OnClearScreen(BasicSharp sender);
+    public delegate void OnClearScreen(Interpreter sender);
 
     [Serializable]
-    public delegate void OnBackColor(BasicSharp sender, Color color);
+    public delegate void OnBackColor(Interpreter sender, Color color);
 
     [Serializable]
-    public delegate void OnForeColor(BasicSharp sender, Color color);
+    public delegate void OnForeColor(Interpreter sender, Color color);
 
     [Serializable]
-    public delegate void OnInKey(BasicSharp sender, ref int keyCode);
+    public delegate void OnInKey(Interpreter sender, ref int keyCode);
 
     [Serializable]
-    public delegate void OnInput(BasicSharp sender, ref string text);
+    public delegate void OnInput(Interpreter sender, ref string text);
 
     [Serializable]
-    public delegate void OnPrint(BasicSharp sender, string value);
+    public delegate void OnPrint(Interpreter sender, string value);
 
 
 }

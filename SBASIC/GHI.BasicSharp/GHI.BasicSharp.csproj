@@ -38,7 +38,6 @@
     <Compile Include="Helper\CommunicationsBus.cs" />
     <Compile Include="Libs\BuiltIns.cs" />
     <Compile Include="Libs\EventDelegates.cs" />
-    <Compile Include="Libs\BasicSharp.cs" />
     <Compile Include="Libs\Interpreter.cs" />
     <Compile Include="Libs\Lexer.cs" />
     <Compile Include="Libs\Marker.cs" />

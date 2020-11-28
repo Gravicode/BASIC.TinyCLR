@@ -8,6 +8,13 @@ namespace GHI.BasicSharp.Helper
     public class CharExtensions
 
     {
+        public static bool IsLetter(char c)
+        {
+            if (c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z')
+                return true;
+            else
+                return false;
+        }
         public static bool IsDigit(char c)
         {
             if ( !(c < '0' || c > '9'))
@@ -18,6 +25,11 @@ namespace GHI.BasicSharp.Helper
             {
                 return false;
             }
+        }
+
+        public static bool IsLetterOrDigit(char c)
+        {
+            return IsLetter(c) || IsDigit(c);
         }
     }
 }

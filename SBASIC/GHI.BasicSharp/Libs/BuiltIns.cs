@@ -5,7 +5,7 @@ using System.Collections;
 using System.Text;
 //using System.Threading.Tasks;
 
-namespace BasicSharp
+namespace GHI.BasicSharp
 {
     class BuiltIns
     {

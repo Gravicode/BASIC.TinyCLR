@@ -2,7 +2,7 @@ using GHI.BasicSharp;
 using GHI.BasicSharp.Helper;
 using System;
 
-namespace BasicSharp
+namespace GHI.BasicSharp
 {
     public class Lexer
     {
@@ -39,7 +39,7 @@ namespace BasicSharp
                 line += GetChar();
             } while (lastChar != '\n' && lastChar != (char)0);
 
-            line.Remove(line.Length - 1);
+            line = Strings.Remove(line, line.Length - 1);
 
             GoTo(oldMarker);
 
@@ -64,16 +64,17 @@ namespace BasicSharp
 
         public Token GetToken()
         {
+            
             // skip white chars
             while (lastChar == ' ' || lastChar == '\t' || lastChar == '\r')
                 GetChar();
 
             TokenMarker = sourceMarker;
 
-            if (char.IsLetter(lastChar))
+            if (CharExtensions.IsLetter(lastChar))
             {
                 Identifier = lastChar.ToString();
-                while (char.IsLetterOrDigit(GetChar()))
+                while (CharExtensions.IsLetterOrDigit(GetChar()))
                     Identifier += lastChar;
 
                 switch (Identifier.ToUpper())

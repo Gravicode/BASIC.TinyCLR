@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BASIC.Test", "SBASIC.Test\B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHI.BasicSharp", "GHI.BasicSharp\GHI.BasicSharp.csproj", "{BF3E0D16-5E5D-41D8-9F04-999C0CF8B1E7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interpreter", "Interpreter", "{07FD756A-CACB-4FF9-AF0B-382DA48C72EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{782BE89F-12CD-4174-B567-10C8A0AA8105} = {07FD756A-CACB-4FF9-AF0B-382DA48C72EE}
+		{BF3E0D16-5E5D-41D8-9F04-999C0CF8B1E7} = {07FD756A-CACB-4FF9-AF0B-382DA48C72EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98F65E67-4789-402A-8EE1-24E45C35C1B0}

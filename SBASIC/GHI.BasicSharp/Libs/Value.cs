@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BasicSharp
+namespace GHI.BasicSharp
 {
     public enum ValueType
     {

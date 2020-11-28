@@ -3,7 +3,7 @@ using System.Collections;
 using System.Diagnostics;
 //using System.Collections.Generic;
 
-namespace BasicSharp
+namespace GHI.BasicSharp
 {
     public class Interpreter
     {
@@ -51,7 +51,31 @@ namespace BasicSharp
             BuiltIns.InstallAll(this); // map all builtins functions
         }
 
-        public Value GetVar(string name)
+        public Interpreter()
+        {
+
+        }
+
+        public int Run(string Script)
+        {
+            this.lex = new Lexer(Script);
+            this.vars = new Hashtable();
+            this.labels = new Hashtable();
+            this.loops = new Hashtable();
+            this.funcs = new Hashtable();
+
+            /*
+            this.vars = new Dictionary<string, Value>();
+            this.labels = new Dictionary<string, Marker>();
+            this.loops = new Dictionary<string, Marker>();
+            this.funcs = new Dictionary<string, BasicFunction>();
+             */
+            this.ifcounter = 0;
+            BuiltIns.InstallAll(this); // map all builtins functions
+            return 0;
+        }
+
+            public Value GetVar(string name)
         {
             if (!vars.Contains(name))
                 throw new Exception("Variable with name " + name + " does not exist.");
@@ -129,8 +153,8 @@ namespace BasicSharp
             GetNextToken();
             switch (keyword)
             {
-                case Token.Print: Print(); break;
-                case Token.Input: Input(); break;
+                case Token.Print: DoPrint(); break;
+                case Token.Input: GetInput(); break;
                 case Token.Goto: Goto(); break;
                 case Token.If: If(); break;
                 case Token.Else: Else(); break;
@@ -160,15 +184,16 @@ namespace BasicSharp
             }
         }
 
-        void Print()
+        void DoPrint()
         {
             if (!HasPrint)
                 Error("Print command not allowed");
 
             Debug.WriteLine(Expr().ToString());
+            OnPrint(this, Expr().ToString()); //FixString(lineNumber, sParam)
         }
 
-        void Input()
+        void GetInput()
         {
             if (!HasInput)
                 Error("Input command not allowed");
@@ -489,5 +514,51 @@ namespace BasicSharp
 
             return prim;
         }
+
+        #region Events
+
+        public event OnClearScreen ClearScreen;
+        protected virtual void OnClearScreen(Interpreter sender)
+        {
+            if (ClearScreen != null)
+                ClearScreen(sender);
+        }
+        /*
+        public event OnBackColor BackColor;
+        protected virtual void OnBackColor(Interpreter sender, Color color)
+        {
+            if (BackColor != null)
+                BackColor(sender, color);
+        }
+
+        public event OnForeColor ForeColor;
+        protected virtual void OnForeColor(Interpreter sender, Color color)
+        {
+            if (ForeColor != null)
+                ForeColor(sender, color);
+        }
+        */
+        public event OnInKey InKey;
+        protected virtual void OnInKey(Interpreter sender, ref int KeyCode)
+        {
+            if (InKey != null)
+                InKey(sender, ref KeyCode);
+        }
+
+        public event OnInput Input;
+        protected virtual void OnInput(Interpreter sender, ref string Text)
+        {
+            if (Input != null)
+                Input(sender, ref Text);
+        }
+
+        public event OnPrint Print;
+        protected virtual void OnPrint(Interpreter sender, string value)
+        {
+            if (Print != null)
+                Print(sender, value);
+        }
+
+        #endregion
     }
 }

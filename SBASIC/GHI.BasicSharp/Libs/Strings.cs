@@ -377,7 +377,17 @@ namespace GHI.BasicSharp
             }
 
         }
+        // a remove that just takes a startindex.
+        public static string Remove(string source, int startIndex)
+        {
+            if (startIndex < 0)
+                throw new ArgumentOutOfRangeException(nameof(startIndex), "start index out of range");
 
+            if (startIndex >= source.Length)
+                throw new ArgumentOutOfRangeException(nameof(startIndex), "less than length");
+
+            return source.Substring(0, startIndex);
+        }
         #endregion
 
     }

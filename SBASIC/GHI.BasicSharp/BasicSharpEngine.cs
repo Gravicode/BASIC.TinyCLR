@@ -11,7 +11,7 @@ namespace GHI.BasicSharp
     public class BasicSharpEngine
     {
         public Thread BasicProc { get; set; }
-        GHI.BasicSharp.BasicSharp basic = null;
+        Interpreter basic = null;
         CommunicationsBus Bus { get; set; }
         public BasicSharpEngine(string uartPort, int baudRate=9600)
         {
@@ -20,19 +20,19 @@ namespace GHI.BasicSharp
            
             if (basic == null)
             {
-                basic = new GHI.BasicSharp.BasicSharp();
+                basic = new Interpreter();
                 basic.Print += Basic_Print;
                 basic.ClearScreen += Basic_ClearScreen;
             }
            
         }
-        private void Basic_ClearScreen(GHI.BasicSharp.BasicSharp sender)
+        private void Basic_ClearScreen(Interpreter sender)
         {
             //do nothing
             Debug.WriteLine("CLEAR SCREEN");
         }
 
-        private void Basic_Print(GHI.BasicSharp.BasicSharp sender, string value)
+        private void Basic_Print(Interpreter sender, string value)
         {
             Debug.WriteLine(value);
             Bus.WriteLine(value);
@@ -97,6 +97,7 @@ namespace GHI.BasicSharp
             }
             try
             {
+                //this is can run if the whole codes send to the parameter, cannot process partially (repl)
                 basic.Run(codes);
                
             }

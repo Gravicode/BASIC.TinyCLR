@@ -1,5 +1,5 @@
 ﻿
-namespace BasicSharp
+namespace GHI.BasicSharp
 {
     public struct Marker
     {
