@@ -33,7 +33,7 @@ namespace GHI.Basic
                 DataBits = 8,
                 Parity = UartParity.None,
                 StopBits = UartStopBitCount.One,
-                Handshaking = UartHandshake.RequestToSend
+                Handshaking = UartHandshake.None //UartHandshake.RequestToSend
 
             };
 
@@ -54,7 +54,7 @@ namespace GHI.Basic
                 DataBits = 8,
                 Parity = UartParity.None,
                 StopBits = UartStopBitCount.One,
-                Handshaking = UartHandshake.RequestToSend
+                Handshaking =  UartHandshake.None//UartHandshake.RequestToSend
 
             };
 
@@ -206,7 +206,8 @@ namespace GHI.Basic
             }
             return string.Empty;
         }
-
+       
+      
         public void Read(byte[] data) => this.Read(data, 0, data.Length);
 
         public void Read(byte[] data, int offset, int count)

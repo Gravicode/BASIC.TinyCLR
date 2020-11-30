@@ -159,7 +159,7 @@ namespace GHI.Basic
             }
 
         }
-        public const string NewLine = "\r";//"\n";
+        public const string NewLine = "\n";
         /// <summary>
         /// Ensures the directory ends with a '\' character
         /// </summary>
