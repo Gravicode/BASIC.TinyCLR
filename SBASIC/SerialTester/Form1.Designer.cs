@@ -42,6 +42,7 @@ namespace SerialTester
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TxtStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.BtnClear = new System.Windows.Forms.Button();
+            this.BtnDisconnect = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,11 +157,21 @@ namespace SerialTester
             this.BtnClear.Text = "&Clear";
             this.BtnClear.UseVisualStyleBackColor = true;
             // 
+            // BtnDisconnect
+            // 
+            this.BtnDisconnect.Location = new System.Drawing.Point(284, 6);
+            this.BtnDisconnect.Name = "BtnDisconnect";
+            this.BtnDisconnect.Size = new System.Drawing.Size(76, 26);
+            this.BtnDisconnect.TabIndex = 12;
+            this.BtnDisconnect.Text = "&Disconnect";
+            this.BtnDisconnect.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 463);
+            this.Controls.Add(this.BtnDisconnect);
             this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label4);
@@ -198,6 +209,7 @@ namespace SerialTester
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel TxtStatus;
         private System.Windows.Forms.Button BtnClear;
+        private System.Windows.Forms.Button BtnDisconnect;
     }
 }
 

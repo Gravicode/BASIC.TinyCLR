@@ -1,4 +1,4 @@
-﻿using GHI.BasicSharp;
+﻿using GHI.BasicRepl;
 using GHIElectronics.TinyCLR.Devices.Uart;
 using System;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 
-namespace GHI.BasicSharp
+namespace GHI.BasicRepl
 {
     public class CommunicationsBus : IDisposable
     {
@@ -33,7 +33,7 @@ namespace GHI.BasicSharp
                 DataBits = 8,
                 Parity = UartParity.None,
                 StopBits = UartStopBitCount.One,
-                Handshaking = UartHandshake.None
+                Handshaking = UartHandshake.None //UartHandshake.RequestToSend
 
             };
 
@@ -54,7 +54,7 @@ namespace GHI.BasicSharp
                 DataBits = 8,
                 Parity = UartParity.None,
                 StopBits = UartStopBitCount.One,
-                Handshaking = UartHandshake.None
+                Handshaking =  UartHandshake.None//UartHandshake.RequestToSend
 
             };
 
@@ -206,7 +206,8 @@ namespace GHI.BasicSharp
             }
             return string.Empty;
         }
-
+       
+      
         public void Read(byte[] data) => this.Read(data, 0, data.Length);
 
         public void Read(byte[] data, int offset, int count)

@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
-namespace SBASIC.Library
+namespace GHI.Basic
 {
     public class SBasicEngine
     {

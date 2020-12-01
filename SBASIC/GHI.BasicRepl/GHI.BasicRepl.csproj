@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\GHIElectronics.TinyCLR.Core.2.0.0\build\net452\GHIElectronics.TinyCLR.Core.props" Condition="Exists('..\packages\GHIElectronics.TinyCLR.Core.2.0.0\build\net452\GHIElectronics.TinyCLR.Core.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{088A7F55-BF6C-4F39-9636-0B5E44BC2308}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GHI.BasicRepl</RootNamespace>
+    <AssemblyName>GHI.BasicRepl</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A1948822-69DD-4150-919B-F3F42EFB71CC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BasicReplEngine.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Helper\CommunicationsBus.cs" />
+    <Compile Include="Helper\EventDelegates.cs" />
+    <Compile Include="Helper\Strings.cs" />
+    <Compile Include="IO\SerialInputOutput.cs" />
+    <Compile Include="IO\ErrorMessages.Designer.cs" />
+    <Compile Include="IO\FileProgramRepository.cs" />
+    <Compile Include="IO\IInputOutput.cs" />
+    <Compile Include="IO\IOException.cs" />
+    <Compile Include="IO\IProgramRepository.cs" />
+    <Compile Include="Parsing\ErrorMessages.Designer.cs" />
+    <Compile Include="Parsing\Parser.cs" />
+    <Compile Include="Parsing\ParserException.cs" />
+    <Compile Include="Parsing\Scanner.cs" />
+    <Compile Include="Parsing\ScannerConditionExtensions.cs" />
+    <Compile Include="Parsing\ScannerExpressionExtensions.cs" />
+    <Compile Include="Parsing\ScannerExtensions.cs" />
+    <Compile Include="Parsing\ScannerStatementExtensions.cs" />
+    <Compile Include="Parsing\TextReaderExtensions.cs" />
+    <Compile Include="Parsing\Token.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\ArrayExtensions.cs" />
+    <Compile Include="Runtime\Associativity.cs" />
+    <Compile Include="Runtime\BinaryOperator.cs" />
+    <Compile Include="Runtime\BuiltInFunctions.cs" />
+    <Compile Include="Runtime\BuiltInOperators.cs" />
+    <Compile Include="Runtime\Conditions\And.cs" />
+    <Compile Include="Runtime\Conditions\Equal.cs" />
+    <Compile Include="Runtime\Conditions\GreaterThan.cs" />
+    <Compile Include="Runtime\Conditions\GreaterThanOrEqual.cs" />
+    <Compile Include="Runtime\Conditions\LessThan.cs" />
+    <Compile Include="Runtime\Conditions\LessThanOrEqual.cs" />
+    <Compile Include="Runtime\Conditions\Not.cs" />
+    <Compile Include="Runtime\Conditions\NotEqual.cs" />
+    <Compile Include="Runtime\Conditions\Or.cs" />
+    <Compile Include="Runtime\Conditions\Xor.cs" />
+    <Compile Include="Runtime\DynamicBuilder.cs" />
+    <Compile Include="Runtime\ErrorMessages.Designer.cs" />
+    <Compile Include="Runtime\EvaluateResult.cs" />
+    <Compile Include="Runtime\ExpressionExtensions.cs" />
+    <Compile Include="Runtime\Expressions\Add.cs" />
+    <Compile Include="Runtime\Expressions\ArrayVariable.cs" />
+    <Compile Include="Runtime\Expressions\Constant.cs" />
+    <Compile Include="Runtime\Expressions\Divide.cs" />
+    <Compile Include="Runtime\Expressions\Function.cs" />
+    <Compile Include="Runtime\Expressions\Modulo.cs" />
+    <Compile Include="Runtime\Expressions\Multiply.cs" />
+    <Compile Include="Runtime\Expressions\Negative.cs" />
+    <Compile Include="Runtime\Expressions\Positive.cs" />
+    <Compile Include="Runtime\Expressions\Power.cs" />
+    <Compile Include="Runtime\Expressions\Rnd.cs" />
+    <Compile Include="Runtime\Expressions\ScalarVariable.cs" />
+    <Compile Include="Runtime\Expressions\Subtract.cs" />
+    <Compile Include="Runtime\ForLoop.cs" />
+    <Compile Include="Runtime\IExpression.cs" />
+    <Compile Include="Runtime\ILoop.cs" />
+    <Compile Include="Runtime\ILValue.cs" />
+    <Compile Include="Runtime\IStatement.cs" />
+    <Compile Include="Runtime\Line.cs" />
+    <Compile Include="Runtime\Messages.Designer.cs" />
+    <Compile Include="Runtime\MultilineLoop.cs" />
+    <Compile Include="Runtime\Priority.cs" />
+    <Compile Include="Runtime\ProgramResult.cs" />
+    <Compile Include="Runtime\ProgramRunner.cs" />
+    <Compile Include="Runtime\Range.cs" />
+    <Compile Include="Runtime\RangeExtensions.cs" />
+    <Compile Include="Runtime\ReadEvaluatePrintLoop.cs" />
+    <Compile Include="Runtime\RunTimeEnvironment.cs" />
+    <Compile Include="Runtime\RunTimeException.cs" />
+    <Compile Include="Runtime\Statements\Dim.cs" />
+    <Compile Include="Runtime\Statements\End.cs" />
+    <Compile Include="Runtime\Statements\For.cs" />
+    <Compile Include="Runtime\Statements\ForNext.cs" />
+    <Compile Include="Runtime\Statements\Goto.cs" />
+    <Compile Include="Runtime\Statements\IfThenElse.cs" />
+    <Compile Include="Runtime\Statements\Input.cs" />
+    <Compile Include="Runtime\Statements\Let.cs" />
+    <Compile Include="Runtime\Statements\List.cs" />
+    <Compile Include="Runtime\Statements\Load.cs" />
+    <Compile Include="Runtime\Statements\Next.cs" />
+    <Compile Include="Runtime\Statements\Nop.cs" />
+    <Compile Include="Runtime\Statements\Print.cs" />
+    <Compile Include="Runtime\Statements\PrintLine.cs" />
+    <Compile Include="Runtime\Statements\Quit.cs" />
+    <Compile Include="Runtime\Statements\Randomize.cs" />
+    <Compile Include="Runtime\Statements\Rem.cs" />
+    <Compile Include="Runtime\Statements\Remove.cs" />
+    <Compile Include="Runtime\Statements\Run.cs" />
+    <Compile Include="Runtime\Statements\Save.cs" />
+    <Compile Include="Runtime\UnaryOperator.cs" />
+    <Compile Include="Runtime\Variables.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GHIElectronics.TinyCLR.Devices.Uart, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GHIElectronics.TinyCLR.Devices.Uart.2.0.0\lib\net452\GHIElectronics.TinyCLR.Devices.Uart.dll</HintPath>
+    </Reference>
+    <Reference Include="GHIElectronics.TinyCLR.Drawing, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GHIElectronics.TinyCLR.Drawing.2.0.0\lib\net452\GHIElectronics.TinyCLR.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="GHIElectronics.TinyCLR.IO, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GHIElectronics.TinyCLR.IO.2.0.0\lib\net452\GHIElectronics.TinyCLR.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="GHIElectronics.TinyCLR.Native, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GHIElectronics.TinyCLR.Native.2.0.0\lib\net452\GHIElectronics.TinyCLR.Native.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IO\ErrorMessages.resx" />
+    <EmbeddedResource Include="Parsing\ErrorMessages.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runtime\ErrorMessages.resx" />
+    <EmbeddedResource Include="Runtime\Messages.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\GHIElectronics.TinyCLR.Core.2.0.0\build\net452\GHIElectronics.TinyCLR.Core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GHIElectronics.TinyCLR.Core.2.0.0\build\net452\GHIElectronics.TinyCLR.Core.props'))" />
+  </Target>
+</Project>

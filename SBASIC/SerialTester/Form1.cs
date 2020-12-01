@@ -41,6 +41,18 @@ namespace SerialTester
         void Setup()
         {
             PopulateComPorts();
+            BtnDisconnect.Click += (a, b) => {
+                if (IsConnect)
+                {
+                    if (bus != null)
+                    {
+                        bus.Dispose();
+                    }
+                    IsConnect = false;
+                    TxtStatus.Text = "Disconnected";
+                   
+                }
+            };
             BtnConnect.Click += (a, b) => {
 
                 try
@@ -81,12 +93,16 @@ namespace SerialTester
                 Console.WriteLine("write:"+TxtMessage.Text);
                 if (TxtMessage.Lines.Count() > 0)
                 {
-                    var lines = TxtMessage.Lines.ToList();
-                    foreach (var line in lines)
+                    Task BatchTask = new Task(() =>
                     {
-                        bus.WriteLine(line);
-                        Thread.Sleep(1000);
-                    }
+                        var lines = TxtMessage.Lines.ToList();
+                        foreach (var line in lines)
+                        {
+                            bus.WriteLine(line);
+                            Thread.Sleep(1000);
+                        }
+                    });
+                    BatchTask.Start();
 
                 }
                 else
@@ -114,11 +130,11 @@ namespace SerialTester
         {
             if (this.InvokeRequired)
             {
-                this.Invoke(new MethodInvoker(() => TxtResponse.AppendText(value + Environment.NewLine)));
+                this.Invoke(new MethodInvoker(() => TxtResponse.AppendText(value)));
             }
             else
             {
-                TxtResponse.AppendText(value + Environment.NewLine);
+                TxtResponse.AppendText(value);
             }
 
         }

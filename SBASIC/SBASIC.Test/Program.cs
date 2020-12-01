@@ -1,6 +1,6 @@
 ﻿
 using GHIElectronics.TinyCLR.Pins;
-using SBASIC.Library;
+using GHI.Basic;
 using System;
 using System.Collections;
 using System.Diagnostics;
